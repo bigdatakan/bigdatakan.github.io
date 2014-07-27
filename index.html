@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Stock Quote Application</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Stock Quote Application">
+  <meta name="author" content="CY Kan">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Stock Quote Application</h1>
+    <h2>Developing Data Products Course Project</h2>
+    <p>CY Kan<br/>Coursera Signature Track Student</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Stock Quote Application</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Introduction</h3>
+
+<p>The Shiny application is a simple stock analysis application, providing the following features:</p>
+
+<ol>
+<li>Support of any stock symbol available at Yahoo! Finance</li>
+<li>Customizable date range</li>
+<li>Inclusion of Simple Moving Average with configurable period parameter</li>
+<li>Selection of candlestick or line chart types</li>
+<li>Beautiful price chart of the stock</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Stock Quote Application</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>How to use the app</h3>
+
+<table><thead>
+<tr>
+<th>UI Inputs</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Symbol</td>
+<td>The stock symbol of interest</td>
+</tr>
+<tr>
+<td>Date Range</td>
+<td>The start and end dates of the price chart</td>
+</tr>
+<tr>
+<td>Chart Type</td>
+<td>Either candle (default) or line can be chosen</td>
+</tr>
+<tr>
+<td>Simple Moving Average</td>
+<td>Tick to superimpose Simple Moving Average on the price chart</td>
+</tr>
+<tr>
+<td>Period (Days)</td>
+<td>Period of the Simple Moving Average, default 10 days</td>
+</tr>
+<tr>
+<td>Refresh Chart</td>
+<td>Button to refresh the price chart</td>
+</tr>
+</tbody></table>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Stock Quote Application</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>How the price chart works</h3>
+
+<p>The charting features of this application is provided by quantmod, a quantitative financial modelling &amp; trading framework for R. Its details can be found at <a href="http://www.quantmod.com/">http://www.quantmod.com/</a>.</p>
+
+<p>The stock quote data is retrieved by calling <code>getSymbols()</code> function with the stock symbol as the parameter.</p>
+
+<pre><code class="r">library(quantmod)
+str(getSymbols)
+</code></pre>
+
+<pre><code>## function (Symbols = NULL, env = parent.frame(), reload.Symbols = FALSE, 
+##     verbose = FALSE, warnings = TRUE, src = &quot;yahoo&quot;, symbol.lookup = TRUE, 
+##     auto.assign = getOption(&quot;getSymbols.auto.assign&quot;, TRUE), ...)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Stock Quote Application</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>How the price chart works</h3>
+
+<p>The price chart can then be created by calling <code>chartSeries()</code> function with appropriate chart settings.</p>
+
+<pre><code class="r">str(chartSeries)
+</code></pre>
+
+<pre><code>## function (x, type = c(&quot;auto&quot;, &quot;candlesticks&quot;, &quot;matchsticks&quot;, &quot;bars&quot;, 
+##     &quot;line&quot;), subset = NULL, show.grid = TRUE, name = NULL, time.scale = NULL, 
+##     log.scale = FALSE, TA = &quot;addVo()&quot;, TAsep = &quot;;&quot;, line.type = &quot;l&quot;, 
+##     bar.type = &quot;ohlc&quot;, theme = chartTheme(&quot;black&quot;), layout = NA, major.ticks = &quot;auto&quot;, 
+##     minor.ticks = TRUE, yrange = NULL, plot = TRUE, up.col, dn.col, 
+##     color.vol = TRUE, multi.col = FALSE, ...)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Stock Quote Application'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Stock Quote Application'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Stock Quote Application'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Stock Quote Application'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
