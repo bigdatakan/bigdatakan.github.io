@@ -1,0 +1,66 @@
+---
+title       : Stock Quote Application
+subtitle    : Developing Data Products Course Project
+author      : CY Kan
+job         : Coursera Signature Track Student
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+
+## Stock Quote Application
+
+### Introduction
+
+The Shiny application is a simple stock analysis application, providing the following features:
+
+1. Support of any stock symbol available at Yahoo! Finance
+2. Customizable date range
+3. Inclusion of Simple Moving Average with configurable period parameter
+4. Selection of candlestick or line chart types
+5. Beautiful price chart of the stock
+
+--- .class #id 
+
+## Stock Quote Application
+
+### How to use the app
+
+| UI Inputs | Description
+| --------- | -----------
+| Symbol | The stock symbol of interest
+| Date Range | The start and end dates of the price chart
+| Chart Type | Either candle (default) or line can be chosen
+| Simple Moving Average | Tick to superimpose Simple Moving Average on the price chart
+| Period (Days) | Period of the Simple Moving Average, default 10 days
+| Refresh Chart | Button to refresh the price chart         
+
+--- .class #id
+
+## Stock Quote Application
+
+### How the price chart works
+
+The charting features of this application is provided by quantmod, a quantitative financial modelling & trading framework for R. Its details can be found at <http://www.quantmod.com/>.
+
+The stock quote data is retrieved by calling ```getSymbols()``` function with the stock symbol as the parameter.
+
+```{r}
+library(quantmod)
+str(getSymbols)
+```
+
+--- .class #id
+
+## Stock Quote Application
+
+### How the price chart works
+
+The price chart can then be created by calling ```chartSeries()``` function with appropriate chart settings.
+
+```{r}
+str(chartSeries)
+```
